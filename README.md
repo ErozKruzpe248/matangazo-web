@@ -1,14 +1,16 @@
-# Matangazo — versión comercial 4
+# Matangazo — versión comercial 5
 
 Web independiente de WordPress, centrada en servicios y cotización. Incluye portada, seis páginas de servicios y consulta por WhatsApp. No contiene directorio ni conexión con la instalación de matangazo.mx.
 
 ## Cambios de esta versión
 
-Se conserva la composición editorial y la muestra animada, recuperando la identidad original de Matangazo: fondo blanco, bloques de color y degradados difuminados. Azul #1427DF y rojo #E20613 extraídos del logotipo original. El azul profundo #282E64 reproduce el extremo del degradado del sitio actual; el amarillo cálido #EABE12 se limita a pequeños acentos.
+Se mantiene la paleta original de Matangazo y se incorporan demostraciones de diseño: un recorrido de web en una pantalla y un teléfono, una composición de publicaciones por capas, más aplicaciones de marca y los logotipos reales de los tres proyectos ya mencionados.
 
-Las reglas permanentes de marca están documentadas en `AGENTS.md`. Los colores se centralizan en las variables de `dist/styles.css`; las superficies claras son mezclas con blanco. No se recolorearon los logotipos ni las fotografías de marca.
+El comparador muestra la evolución real de la identidad de Matangazo entre 2017 y 2026. Usa la lámina original de la presentación y recortes de visualización en SVG, con control deslizante, teclado y botones para cada versión. No representa un caso de cliente.
 
-La muestra avanza automáticamente cada 6.5 segundos solo si está visible en escritorio. Incluye controles manuales y pausa. Se detiene al pasar a otra pestaña y al explorar sus controles; en móvil comienza en modo manual. La preferencia de movimiento reducido elimina animaciones y reproducción automática. Las interacciones usan CSS y JavaScript nativos, sin video, bibliotecas de animación ni fuentes externas.
+Las animaciones nuevas se reproducen una sola vez al entrar en pantalla y duran como máximo 4.2 segundos. Se pausan fuera de vista y pueden repetirse con un botón. La muestra principal conserva su pausa y controles manuales. Se respeta movimiento reducido. No se añadieron videos, bibliotecas de animación ni fuentes externas.
+
+Las reglas permanentes de marca están documentadas en `AGENTS.md`: azul #1427DF, rojo #E20613, base blanca y amarillo cálido #EABE12 como acento minoritario.
 
 El selector orienta a diseño web, Google Ads o identidad de marca. El enlace del servicio conserva esa selección al abrir la cotización. En contacto, el botón flotante se oculta para no tapar el formulario en móvil.
 
@@ -18,7 +20,7 @@ Requiere Node.js. No necesita instalar paquetes.
 
 1. Ejecutar `npm run dev` desde esta carpeta.
 2. Abrir `http://127.0.0.1:4173/`.
-3. Editar contenido general en `scripts/generate.mjs`, portada y selector en `scripts/hero.mjs`, estilos base en `dist/styles.css`, dirección editorial en `dist/direction.css` y comportamiento en `dist/app.js`.
+3. Editar contenido general en `scripts/generate.mjs`, portada y selector en `scripts/hero.mjs`, demostraciones en `scripts/motion.mjs`, estilos base en `dist/styles.css`, dirección editorial en `dist/direction.css`, demostraciones en `dist/motion.css` y comportamiento en `dist/app.js`.
 4. Después de cambiar contenido, ejecutar `node scripts/generate.mjs`.
 5. Ejecutar `npm run check` y `node --check dist/app.js`.
 
@@ -56,3 +58,12 @@ El criterio acordado es al menos 90 en rendimiento móvil y escritorio. La revis
 Los resultados locales no incluyen latencia ni procesamiento del alojamiento de producción. La prueba pública de PageSpeed debe realizarse al disponer de una dirección pública autorizada. No se debe presentar una auditoría de la pantalla de acceso como si fuera la auditoría del sitio.
 
 La exclusión de rastreo en `robots.txt` reduce intencionalmente la categoría SEO del informe de revisión. Debe revisarse junto con el dominio, sitemap y condiciones del lanzamiento público; no se retiró para subir artificialmente una puntuación.
+
+## Fuentes del material visual de la versión 5
+
+- Presentación original de Matangazo: página 2 para la evolución de identidad y página 9 para el vehículo, termo y aplicaciones de marca. Se conservaron los diseños originales; se optimizaron archivos para su uso web.
+- Los logotipos de FiscalNet, Mr Ruta y Fleteando México proceden de las imágenes que acompañan esos proyectos en la portada de matangazo.mx. Se muestran como identificación de esos negocios, no como capturas de una web o aplicación desarrollada.
+- https://matangazo.mx/wp-content/uploads/2026/08/matangazo-marketing-web-fiscalnet.webp
+- https://matangazo.mx/wp-content/uploads/2026/08/mr-ruta-marketing-digital-matangazo.webp
+- https://matangazo.mx/wp-content/uploads/2026/08/cliente-ejemplo-fleteando-mexico.webp
+- Las pantallas y publicaciones de demostración están identificadas como muestras de Matangazo. No contienen precios, resultados ni testimonios nuevos.

@@ -57,6 +57,34 @@ if(goalButtons.length){
 }
 
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+const motionBlocks=Array.from(document.querySelectorAll('[data-motion]'));
+if('IntersectionObserver' in window){
+  const motionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    entry.target.classList.toggle('motion-visible',entry.isIntersecting);
+    if(entry.isIntersecting&&!motionPreference.matches)entry.target.classList.add('motion-active');
+  }),{threshold:0.15});
+  motionBlocks.forEach(block=>motionObserver.observe(block));
+}
+document.querySelectorAll('[data-replay]').forEach(button=>button.addEventListener('click',()=>{
+  const block=button.closest('[data-motion]');
+  if(!block||motionPreference.matches)return;
+  block.classList.remove('motion-active');
+  window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>block.classList.add('motion-active')));
+}));
+motionPreference.addEventListener('change',()=>{if(motionPreference.matches)motionBlocks.forEach(block=>block.classList.remove('motion-active'));});
+
+document.querySelectorAll('[data-evolution]').forEach(evolution=>{
+  const tool=evolution.querySelector('.evolution-tool');
+  const slider=evolution.querySelector('input[type="range"]');
+  const update=()=>{
+    const value=Math.max(0,Math.min(100,Number(slider.value)));
+    tool.style.setProperty('--split',value+'%');
+    slider.setAttribute('aria-valuetext',value===100?'Identidad de 2017':value===0?'Identidad de 2026':`${value}% de la identidad de 2017 y ${100-value}% de la de 2026`);
+  };
+  slider.addEventListener('input',update);
+  evolution.querySelectorAll('[data-evolution-value]').forEach(button=>button.addEventListener('click',()=>{slider.value=button.dataset.evolutionValue;update();}));
+  update();
+});
 const reel=document.querySelector('[data-reel]');
 if(reel){
   const scenes=Array.from(reel.querySelectorAll('[data-scene]'));
