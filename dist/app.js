@@ -35,3 +35,31 @@ if(form){
   });
   form.addEventListener('input',event=>{if(typeof event.target.setCustomValidity==='function')event.target.setCustomValidity('');document.querySelector('#message-review').hidden=true;});
 }
+
+const goalButtons = Array.from(document.querySelectorAll('[data-goal]'));
+if(goalButtons.length){
+  const goals={
+    web:{title:'Una web que presente bien tu negocio.',description:'Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.',label:'Explorar diseño web',url:'/servicios/diseno-web/'},
+    consultas:{title:'Conecta con quienes buscan lo que ofreces.',description:'Revisemos cómo dar a conocer tus servicios con anuncios y una ruta clara al contacto.',label:'Conocer Google Ads',url:'/servicios/google-ads/'},
+    marca:{title:'Una imagen que hable bien de tu negocio.',description:'Dale coherencia a tu identidad, tus materiales y la forma en que te presentas.',label:'Explorar identidad de marca',url:'/servicios/identidad-de-marca/'}
+  };
+  goalButtons.forEach(button=>button.addEventListener('click',()=>{
+    const goal=goals[button.dataset.goal];
+    if(!goal)return;
+    goalButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+    document.querySelector('#goal-heading').textContent=goal.title;
+    document.querySelector('#goal-description').textContent=goal.description;
+    const link=document.querySelector('#goal-link');
+    link.href=goal.url;
+    link.replaceChildren(document.createTextNode(goal.label+' '));
+    const arrow=document.createElement('span');arrow.className='arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';link.append(arrow);
+  }));
+}
+
+const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('is-in-view');observer.unobserve(entry.target);}
+  }),{threshold:0.12});
+  if(!motionPreference.matches)document.querySelectorAll('.service-row,.project,.step,.benefit').forEach(element=>observer.observe(element));
+}
