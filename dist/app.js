@@ -57,6 +57,45 @@ if(goalButtons.length){
 }
 
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+const reel=document.querySelector('[data-reel]');
+if(reel){
+  const scenes=Array.from(reel.querySelectorAll('[data-scene]'));
+  const controls=Array.from(reel.querySelectorAll('[data-reel-select]'));
+  const pause=reel.querySelector('[data-reel-pause]');
+  const status=reel.querySelector('[data-reel-status]');
+  const names=['Diseño web: una buena primera impresión.','Identidad: una marca reconocible en cada detalle.','Comunicación: una voz propia para tu negocio.'];
+  const compact=window.matchMedia('(max-width: 800px)');
+  let index=0,visible=false,timer,paused=motionPreference.matches||compact.matches;
+  const stop=()=>{window.clearTimeout(timer);reel.classList.remove('reel-running');};
+  const updateButton=()=>{
+    pause.querySelector('[data-pause-label]').textContent=paused?'Reproducir':'Pausar';
+    pause.querySelector('[data-pause-icon]').textContent=paused?'▷':'Ⅱ';
+    pause.setAttribute('aria-label',paused?'Reproducir muestra automática':'Pausar muestra automática');
+  };
+  const schedule=()=>{
+    stop();
+    if(paused||!visible||document.hidden||motionPreference.matches)return;
+    reel.classList.add('reel-running');
+    timer=window.setTimeout(()=>{show((index+1)%scenes.length);schedule();},6500);
+  };
+  const show=(next,manual=false)=>{
+    index=next;
+    scenes.forEach((scene,i)=>{scene.hidden=i!==index;scene.classList.toggle('is-active',i===index);scene.setAttribute('aria-hidden',String(i!==index));});
+    controls.forEach((control,i)=>control.setAttribute('aria-pressed',String(i===index)));
+    if(manual)status.textContent=names[index];
+  };
+  controls.forEach((control,i)=>control.addEventListener('click',()=>{paused=true;show(i,true);updateButton();schedule();}));
+  pause.addEventListener('click',()=>{paused=!paused;updateButton();schedule();});
+  // Reading or navigating the sample stops automatic changes.
+  reel.addEventListener('focusin',event=>{if(event.target.closest('[data-reel-pause]'))return;paused=true;updateButton();schedule();});
+  document.addEventListener('visibilitychange',schedule);
+  motionPreference.addEventListener('change',()=>{if(motionPreference.matches)paused=true;pause.hidden=motionPreference.matches;updateButton();schedule();});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:0.2}).observe(reel);
+  }
+  pause.hidden=motionPreference.matches;
+  updateButton();
+}
 if('IntersectionObserver' in window){
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(entry.isIntersecting){entry.target.classList.add('is-in-view');observer.unobserve(entry.target);}

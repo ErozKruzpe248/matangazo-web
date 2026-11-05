@@ -1,12 +1,12 @@
-# Matangazo — versión comercial 2
+# Matangazo — versión comercial 3
 
 Web independiente de WordPress, centrada en servicios y cotización. Incluye portada, seis páginas de servicios y consulta por WhatsApp. No contiene directorio ni conexión con la instalación de matangazo.mx.
 
 ## Cambios de esta versión
 
-Portada con fondos claros y azul y rojo como acentos; combinación de superficies lavanda, coral y verde; tarjetas de servicios y proyectos con más variedad. Se añadieron un selector de necesidades, respuestas visuales a botones y enlaces, movimiento leve de una etiqueta y entradas discretas de secciones al recorrer la página.
+Dirección editorial inspirada en Hallam: portada oscura, titulares amplios, llamadas a la acción coral y una muestra visual con tres escenas de diseño web, identidad y comunicación. Las escenas usan exclusivamente aplicaciones de Matangazo y composiciones ilustrativas, sin atribuirlas a clientes.
 
-Las interacciones usan JavaScript y CSS nativos. No se añadieron bibliotecas de animación, video automático, fuentes externas ni escenas 3D. El contenido y el contacto se muestran desde el inicio. Se respeta la preferencia de movimiento reducido.
+La muestra avanza automáticamente cada 6.5 segundos solo si está visible en escritorio. Incluye controles manuales y pausa. Se detiene al pasar a otra pestaña y al explorar sus controles; en móvil comienza en modo manual. La preferencia de movimiento reducido elimina animaciones y reproducción automática. Las interacciones usan CSS y JavaScript nativos, sin video, bibliotecas de animación ni fuentes externas.
 
 El selector orienta a diseño web, Google Ads o identidad de marca. El enlace del servicio conserva esa selección al abrir la cotización. En contacto, el botón flotante se oculta para no tapar el formulario en móvil.
 
@@ -16,7 +16,7 @@ Requiere Node.js. No necesita instalar paquetes.
 
 1. Ejecutar `npm run dev` desde esta carpeta.
 2. Abrir `http://127.0.0.1:4173/`.
-3. Editar contenido general en `scripts/generate.mjs`, portada y selector en `scripts/hero.mjs`, estilos en `dist/styles.css` y comportamiento en `dist/app.js`.
+3. Editar contenido general en `scripts/generate.mjs`, portada y selector en `scripts/hero.mjs`, estilos base en `dist/styles.css`, dirección editorial en `dist/direction.css` y comportamiento en `dist/app.js`.
 4. Después de cambiar contenido, ejecutar `node scripts/generate.mjs`.
 5. Ejecutar `npm run check` y `node --check dist/app.js`.
 

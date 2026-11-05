@@ -1,18 +1,33 @@
 export const hero = (button, arrow) => `
-<section class="hero hero-v2"><div class="wrap hero-grid">
-  <div class="hero-intro"><p class="eyebrow">Diseño web · Identidad · Marketing digital</p>
-  <h1>Diseño que <span>conecta.</span><br>Marketing que <em>mueve.</em></h1>
-  <p class="hero-copy">Tu negocio tiene mucho que ofrecer. Hagamos que se note con una web, una marca y una estrategia pensadas para tus próximos clientes.</p>
-  <div class="actions">${button('Hablemos de tu negocio','#contacto')}<a class="text-link" href="#servicios">Conoce lo que hacemos <span aria-hidden="true">↓</span></a></div>
-  <p class="hero-note"><span aria-hidden="true">↗</span> Desde Monterrey. Cerca de tu negocio.</p></div>
-  <div class="hero-art" role="img" aria-label="Composición ilustrativa de diseño web e identidad usando aplicaciones de la marca Matangazo">
-    <div class="art-backdrop"></div>
-    <svg class="hero-spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 58 35 85 15 65 42 100 50 65 58 85 85 58 65 50 100 42 65 15 85 35 58 0 50 35 42 15 15 42 35Z" fill="currentColor"/></svg>
-    <div class="browser-art"><div class="browser-chrome"><i></i><i></i><i></i><span>UNA NUEVA FORMA DE PRESENTARTE</span></div><div class="browser-brand"><img src="/assets/matangazo-logo-horizontal.png" width="800" height="127" alt=""><span>Tu marca. Tu siguiente paso. ↗</span></div><div class="browser-content"><div><span class="micro">DISEÑO CON INTENCIÓN</span><h2>Una gran<br>marca.<br><span>Una mejor<br>impresión.</span></h2><span class="mock-button">Hablemos de tu proyecto ↗</span></div><img src="/assets/marca-aplicada.webp" alt="" width="459" height="347" fetchpriority="high"></div><div class="browser-bottom"><span>Identidad propia</span><span>Una oferta clara</span><span>Contacto directo</span></div></div>
-    <div class="art-label"><span>01 / TU MARCA EN ACCIÓN</span><strong>Que se vea.<br>Que se sienta.<br>Que conecte.</strong>${arrow}</div>
-    <div class="art-tag"><span class="tag-dot"></span>Buenas ideas.<strong>Un siguiente paso claro.</strong></div>
-    <span class="art-caption">APLICACIONES DE LA MARCA MATANGAZO</span>
+<section class="hero hero-v3"><div class="wrap">
+  <p class="eyebrow">Diseño · Estrategia · Movimiento</p>
+  <div class="hero-opening"><h1>Haz que te vean.<br><span>Haz que te elijan.</span></h1>
+  <div class="hero-lead"><p>Tu negocio tiene mucho que ofrecer.<br>Hagamos que se note.</p>${button('Hablemos de tu negocio','#contacto')}<span class="hero-location">Desde Monterrey. Cerca de tu negocio.</span></div></div>
+  <div class="brand-reel" aria-label="Nuestra marca en acción" role="region" data-reel>
+    <div class="reel-bar"><span><i aria-hidden="true"></i> MATANGAZO EN ACCIÓN</span><span>DISEÑO QUE CONECTA ↗</span></div>
+    <div class="reel-stage">
+      <div class="reel-scene scene-web is-active" data-scene="0" aria-hidden="false">
+        <div class="reel-note reel-piece"><span class="reel-number">01 / DISEÑO WEB</span><strong>Una buena<br>primera<br><em>impresión.</em></strong><span class="reel-fine">Tu negocio, en su mejor versión.</span></div>
+        <div class="reel-browser reel-piece"><div class="reel-browser-bar"><span>● ● ●</span><span>tu próxima web ↗</span></div><div class="reel-browser-logo"><img src="/assets/matangazo-logo-horizontal.png" width="800" height="127" alt=""></div><div class="reel-web-content"><div><span class="reel-micro">TU MARCA TIENE ALGO QUE DECIR.</span><strong>Se ve bien.<br><em>Se siente tuyo.</em></strong><span class="reel-demo-button">Conoce lo que hacemos ↗</span></div><img src="/assets/marca-aplicada.webp" alt="Taza con la identidad de Matangazo" width="459" height="347" fetchpriority="high"></div><div class="reel-web-bottom"><span>Tu esencia.</span><span>Tu oferta.</span><span>Tu siguiente paso.</span></div></div>
+        <span class="reel-stamp reel-piece" aria-hidden="true">Hecha para<br><b>conectar.</b><span>↗</span></span>
+      </div>
+      <div class="reel-scene scene-identity" data-scene="1" aria-hidden="true" hidden>
+        <div class="identity-word reel-piece" aria-hidden="true">Muy<br><em>tu marca.</em></div>
+        <div class="identity-mug reel-piece"><img src="/assets/marca-aplicada.webp" alt="Identidad de Matangazo aplicada a una taza" width="459" height="347"></div>
+        <div class="identity-shirt reel-piece"><img src="/assets/identidad-matangazo.webp" alt="Identidad de Matangazo en una prenda" width="400" height="548" loading="lazy"></div>
+        <div class="identity-sign reel-piece"><img src="/assets/matangazo-logo-horizontal.png" alt="Matangazo" width="800" height="127"><span>UNA IDENTIDAD. MUCHAS FORMAS DE EXPRESARLA.</span></div>
+        <span class="identity-colors reel-piece" aria-label="Azul, rojo y blanco"><i></i><i></i><i></i></span>
+      </div>
+      <div class="reel-scene scene-social" data-scene="2" aria-hidden="true" hidden>
+        <div class="social-word reel-piece"><span class="reel-number">03 / COMUNICACIÓN</span><strong>Algo bueno<br>está pasando<br><em>en tu negocio.</em></strong><span class="reel-fine">Démosle una voz propia.</span></div>
+        <div class="reel-post post-one reel-piece"><img src="/assets/matangazo-logo-horizontal.png" alt="" width="800" height="127"><strong>Buenas<br>ideas.<br><em>Mejores<br>conexiones.</em></strong><span>DISEÑO CON INTENCIÓN ↗</span></div>
+        <div class="reel-post post-two reel-piece"><span class="post-spark" aria-hidden="true">✳</span><strong>Hazte<br>notar.</strong><span>MATANGAZO / TU MARCA EN MOVIMIENTO</span></div>
+      </div>
+    </div>
+    <div class="reel-controls"><div class="reel-choices" role="group" aria-label="Explorar muestras de la marca"><button type="button" data-reel-select="0" aria-pressed="true">01 <span>Web</span></button><button type="button" data-reel-select="1" aria-pressed="false">02 <span>Identidad</span></button><button type="button" data-reel-select="2" aria-pressed="false">03 <span>Comunicación</span></button></div><button type="button" class="reel-pause" data-reel-pause hidden><span data-pause-icon aria-hidden="true">Ⅱ</span> <span data-pause-label>Pausar</span></button></div>
+    <p class="sr-only" data-reel-status aria-live="polite"></p>
   </div>
+  <div class="hero-closing"><p>Una web que te presente.<br>Una marca que te distinga.<br><span>Una estrategia que te acerque a tus clientes.</span></p><a class="text-link" href="#servicios">Conoce lo que hacemos <span aria-hidden="true">↓</span></a></div>
 </div></section>
 <section class="goal-guide" aria-labelledby="goal-title"><div class="wrap goal-layout">
   <div><p class="eyebrow">Comencemos por ti</p><h2 id="goal-title">¿Qué quieres<br>mover hoy?</h2><p>Elige tu punto de partida.</p></div>
