@@ -1,10 +1,12 @@
-# Matangazo — versión comercial 3
+# Matangazo — versión comercial 4
 
 Web independiente de WordPress, centrada en servicios y cotización. Incluye portada, seis páginas de servicios y consulta por WhatsApp. No contiene directorio ni conexión con la instalación de matangazo.mx.
 
 ## Cambios de esta versión
 
-Dirección editorial inspirada en Hallam: portada oscura, titulares amplios, llamadas a la acción coral y una muestra visual con tres escenas de diseño web, identidad y comunicación. Las escenas usan exclusivamente aplicaciones de Matangazo y composiciones ilustrativas, sin atribuirlas a clientes.
+Se conserva la composición editorial y la muestra animada, recuperando la identidad original de Matangazo: fondo blanco, bloques de color y degradados difuminados. Azul #1427DF y rojo #E20613 extraídos del logotipo original. El azul profundo #282E64 reproduce el extremo del degradado del sitio actual; el amarillo cálido #EABE12 se limita a pequeños acentos.
+
+Las reglas permanentes de marca están documentadas en `AGENTS.md`. Los colores se centralizan en las variables de `dist/styles.css`; las superficies claras son mezclas con blanco. No se recolorearon los logotipos ni las fotografías de marca.
 
 La muestra avanza automáticamente cada 6.5 segundos solo si está visible en escritorio. Incluye controles manuales y pausa. Se detiene al pasar a otra pestaña y al explorar sus controles; en móvil comienza en modo manual. La preferencia de movimiento reducido elimina animaciones y reproducción automática. Las interacciones usan CSS y JavaScript nativos, sin video, bibliotecas de animación ni fuentes externas.
 
