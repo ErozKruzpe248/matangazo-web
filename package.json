@@ -1,0 +1,6 @@
+{
+  "name": "matangazo-comercial",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"dev": "node preview.mjs", "check": "node scripts/check.mjs"}
+}
