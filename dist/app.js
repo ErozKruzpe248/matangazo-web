@@ -65,12 +65,26 @@ if('IntersectionObserver' in window){
   }),{threshold:0.15});
   motionBlocks.forEach(block=>motionObserver.observe(block));
 }
-document.querySelectorAll('[data-replay]').forEach(button=>button.addEventListener('click',()=>{
-  const block=button.closest('[data-motion]');
-  if(!block||motionPreference.matches)return;
-  block.classList.remove('motion-active');
-  window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>block.classList.add('motion-active')));
-}));
+motionBlocks.forEach(block=>{
+  let replayFrame;
+  const replay=()=>{
+    if(motionPreference.matches)return;
+    window.cancelAnimationFrame(replayFrame);
+    block.classList.remove('motion-active');
+    replayFrame=window.requestAnimationFrame(()=>{
+      replayFrame=window.requestAnimationFrame(()=>{
+        if(!motionPreference.matches)block.classList.add('motion-active');
+      });
+    });
+  };
+  block.addEventListener('pointerenter',event=>{
+    if(event.pointerType!=='touch')replay();
+  });
+  block.addEventListener('focus',replay);
+  block.addEventListener('click',event=>{
+    if(event.pointerType==='touch'&&!event.target.closest('a,button,input,select,textarea,summary'))replay();
+  });
+});
 motionPreference.addEventListener('change',()=>{if(motionPreference.matches)motionBlocks.forEach(block=>block.classList.remove('motion-active'));});
 
 document.querySelectorAll('[data-evolution]').forEach(evolution=>{

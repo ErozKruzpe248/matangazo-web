@@ -9,7 +9,7 @@ export const hero = (button, arrow) => `
     <div class="reel-stage">
       <div class="reel-scene scene-web is-active" data-scene="0" aria-hidden="false">
         <div class="reel-note reel-piece"><span class="reel-number">01 / DISEÑO WEB</span><strong>Una buena<br>primera<br><em>impresión.</em></strong><span class="reel-fine">Tu negocio, en su mejor versión.</span></div>
-        <div class="hero-web-demo motion-canvas" data-motion><div class="hero-devices">${webPreview()}</div><button type="button" class="motion-replay" data-replay aria-label="Repetir recorrido de la web">Ver recorrido <span aria-hidden="true">↻</span></button></div>
+        <div class="hero-web-demo motion-canvas" data-motion tabindex="0" role="group" aria-label="Muestra animada de diseño web"><div class="hero-devices">${webPreview()}</div></div>
         <span class="reel-stamp reel-piece" aria-hidden="true">Hecha para<br><b>conectar.</b><span>↗</span></span>
       </div>
       <div class="reel-scene scene-identity" data-scene="1" aria-hidden="true" hidden>

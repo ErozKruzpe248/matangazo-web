@@ -9,7 +9,6 @@
 .home-page .card-seo>p,.home-page .card-ads>p,.home-page .card-seo .service-num,.home-page .card-ads .service-num,.home-page .card-seo .text-link,.home-page .card-ads .text-link{color:#fff}
 .home-page .card-seo .service-icon,.home-page .card-ads .service-icon{color:#fff;border-color:#ffffff80}
 .expanded-preview{color:var(--navy)}
-.expanded-preview>.motion-replay{bottom:7px;left:9px}
 .expanded-preview>.preview-caption{color:var(--muted);font-size:6px;letter-spacing:.8px}
 .card-seo .expanded-preview>.preview-caption,.card-ads .expanded-preview>.preview-caption{color:#fff}
 .identity-board{position:absolute;inset:0 0 43px;border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;isolation:isolate}
