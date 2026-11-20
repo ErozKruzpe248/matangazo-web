@@ -95,7 +95,7 @@
 .home-page .process{background:var(--ink)}.home-page .steps{position:relative;gap:25px}.home-page .step{border-top:2px solid var(--muted);padding-top:24px;position:relative}
 .home-page .step:before{content:'';height:2px;background:var(--red);position:absolute;left:0;right:0;top:-2px;transform:scaleX(0);transform-origin:left}.home-page .step.is-in-view:before{transform:scaleX(1);transition:transform .65s ease}
 .home-page .step:nth-child(2):before{transition-delay:.1s}.home-page .step:nth-child(3):before{transition-delay:.2s}.home-page .step:nth-child(4):before{transition-delay:.3s}.home-page .step:nth-child(5):before{transition-delay:.4s}
-.home-page .step>span{color:var(--red)}.home-page .process .eyebrow:before{background:var(--red)}.home-page .process .section-head>p,.home-page .step p{color:var(--blue-light)}
+.home-page .process .eyebrow:before{background:var(--red)}.home-page .process .section-head>p,.home-page .step p{color:var(--blue-light)}
 .home-page .contact{background:var(--blue-wash)}.home-page .contact .section-title{font-size:clamp(44px,4.8vw,66px)}
 .home-page .faq-intro .section-title{font-size:clamp(40px,4.5vw,59px)}
 @keyframes reel-arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
@@ -169,7 +169,7 @@
 .home-page .process{background:linear-gradient(120deg,var(--blue),var(--navy));color:#fff}
 .home-page .step{border-top-color:#ffffff60}
 .home-page .step:before{background:var(--accent)}
-.home-page .step>span{color:var(--accent)}
+
 .home-page .process .eyebrow{color:#fff}
 .home-page .process .eyebrow:before{background:var(--accent)}
 .home-page .process .section-head>p,.home-page .step p{color:var(--blue-light)}
