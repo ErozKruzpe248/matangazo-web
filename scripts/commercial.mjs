@@ -1,14 +1,19 @@
+import { presenceDemo, ordersDemo } from './web-offer-demos.mjs';
+
 export const commercialTerms = {
   'diseno-web': [
     {
-      name: 'Presencia Web — Plantilla 1',
+      name: 'Presencia Web',
+      demo: presenceDemo,
       rates: [
         {label: 'Implementación', amount: 3500},
         {label: 'Mensualidad', amount: 250}
       ]
     },
     {
-      name: 'Presencia Web — Plantilla 2',
+      name: 'Pedidos Web',
+      id: 'pedidos-web',
+      demo: ordersDemo,
       rates: [
         {label: 'Implementación', amount: 4500},
         {label: 'Mensualidad', amount: 450}
@@ -51,13 +56,13 @@ function offerContent(offer) {
   const duration = offer.duration ? `<div class="price-note">Duración del servicio · ${offer.duration}</div>` : '';
   const installments = offer.installmentAmount ? `<div class="price-note">Pago en dos parcialidades de ${money(offer.installmentAmount)}.</div>` : '';
   const advertising = offer.advertisingExcluded ? '<div class="price-note">No incluye inversión publicitaria.</div>' : '';
-  return `<h3 class="price-name">${offer.name}</h3>${rates}${duration}${installments}${advertising}`;
+  return `<h3 class="price-name">${offer.name}</h3>${offer.demo?.() || ''}${rates}${duration}${installments}${advertising}`;
 }
 
 export function pricingSection(service, href) {
   const offers = commercialTerms[service.slug];
   const cards = offers.map(offer =>
-    `<article class="price-card">${offerContent(offer)}<a class="button" href="${href}">Solicitar cotización</a></article>`
+    `<article class="price-card"${offer.id ? ` id="${offer.id}"` : ''}>${offerContent(offer)}<a class="button" href="${href}">Solicitar cotización</a></article>`
   ).join('');
   return `<section class="section" id="precios"><div class="wrap"><h2 class="section-title">${offers.every(offer => offer.quote) ? 'Solicita una cotización.' : 'Servicios e inversión.'}</h2><div class="price-grid" data-price-service="${service.slug}">${cards}</div></div></section>`;
 }

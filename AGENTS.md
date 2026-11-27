@@ -14,8 +14,8 @@ Regla del usuario: conservar los tonos originales de rojo y azul. No sustituirlo
 
 Los precios de `scripts/commercial.mjs` están congelados hasta recibir autorización expresa del usuario para modificarlos.
 
-- Presencia Web — Plantilla 1 tiene implementación de $3,500 MXN y mensualidad de $250 MXN.
-- Presencia Web — Plantilla 2 tiene implementación de $4,500 MXN y mensualidad de $450 MXN.
+- Presencia Web tiene implementación de $3,500 MXN y mensualidad de $250 MXN.
+- Pedidos Web tiene implementación de $4,500 MXN y mensualidad de $450 MXN.
 - Páginas personalizadas, SEO, Google Ads y automatización muestran «Solicitar cotización», sin precios fijos ni rangos.
 - Community Manager cuesta $26,000 MXN en total por tres meses, en dos parcialidades de $13,000 MXN. No incluye inversión publicitaria.
 - Conservar el alcance original de Community Manager publicado en https://matangazo.mx/diseno-de-redes-sociales-en-monterrey/. Las cantidades originales no especifican una periodicidad adicional.

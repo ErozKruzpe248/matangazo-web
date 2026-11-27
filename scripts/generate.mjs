@@ -30,7 +30,8 @@ const services = [
      'Botón de WhatsApp, ubicación en Google Maps y enlaces a redes sociales.',
      'Información de sucursales, horarios y datos de contacto.',
      'Contador de visitas.',
-     'Diseño adaptable a celular y computadora.'
+     'Diseño adaptable a celular y computadora.',
+     'Menú y pedidos conectados a WhatsApp.'
    ],
    limits: [
      'Tienda en línea, carrito de compra y pagos en línea.',
@@ -38,9 +39,9 @@ const services = [
      'Funciones avanzadas hechas a medida.'
    ],
    faq: [
-     ['¿Mis clientes pueden comprar desde la Plantilla 1?', 'La página muestra tu oferta y permite que te escriban por WhatsApp. Los precios del catálogo son informativos.'],
+     ['¿Cómo recibo pedidos con Presencia Web?', 'Tus clientes pueden consultar el menú y hacer su pedido por WhatsApp. Con Pedidos Web también pueden armar un carrito antes de enviar el pedido.'],
      ['¿Cuándo conviene cotizar una página personalizada?', 'Si tu contenido requiere más espacio o necesitas vender en línea, administrar pedidos o incorporar funciones a medida, solicita una cotización.'],
-     ['¿Cómo se diferencian implementación y mensualidad?', 'Cada plantilla muestra ambos importes por separado. Las páginas personalizadas se cotizan según el proyecto.']
+     ['¿Cómo se diferencian implementación y mensualidad?', 'Presencia Web y Pedidos Web muestran ambos importes por separado. Las páginas personalizadas se cotizan según el proyecto.']
    ]
  },
  {slug:'redes-sociales',name:'Redes sociales',short:'Contenido que le da voz a tu marca.',intro:'Community Manager para las redes sociales de tu negocio.',audience:['Negocios que quieren comunicar mejor','Marcas que necesitan contenido para sus redes','Empresas que buscan apoyo en sus redes'],benefits:[['Publicaciones','12 Post Imagen y 8 videos reel.'],['Historias e identidad visual','Adaptación de cada publicación al formato Historia. Paleta de Colores y formatos establecidos.'],['Calendario y campaña','Calendario Semanal (Autorizado). Diseño y configuración de campaña (no incluye inversión).']],scope:communityManagerScope,faq:[['¿Cuánto dura el servicio?','El servicio de Community Manager tiene una duración de tres meses.'],['¿Cómo se realiza el pago?','El precio total se cubre en dos parcialidades. Consulta los importes en la sección de servicios e inversión.'],['¿Incluye inversión publicitaria?','No incluye inversión publicitaria.']]},
