@@ -82,7 +82,8 @@ motionBlocks.forEach(block=>{
   block.addEventListener('pointerenter',event=>{
     if(event.pointerType!=='touch')replay();
   });
-  block.addEventListener('focus',replay);
+  const focusTarget = block.closest('a.service-showcase') || block;
+  focusTarget.addEventListener('focus',replay);
   block.addEventListener('click',event=>{
     if(event.pointerType==='touch'&&!event.target.closest('a,button,input,select,textarea,summary'))replay();
   });
