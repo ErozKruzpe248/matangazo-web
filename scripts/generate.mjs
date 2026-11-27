@@ -8,7 +8,11 @@ import { additionalServices } from './service-cards.mjs';
 import {webPreview,socialPreview,evolution,projectVisual,methodVisual} from './motion.mjs';
 const requestedBasePath = (env.BASE_PATH || '').replace(/^\/+|\/+$/g, '');
 const basePath = requestedBasePath ? '/' + requestedBasePath : '';
-const siteUrl = (env.SITE_URL || 'https://erozkruzpe248.github.io/matangazo-web').replace(/\/+$/, '');
+const onCloudflarePages = env.CF_PAGES === '1';
+const production = onCloudflarePages && env.CF_PAGES_BRANCH === 'main';
+const officialUrl = 'https://matangazo.com.mx';
+const defaultUrl = onCloudflarePages ? officialUrl : 'https://erozkruzpe248.github.io/matangazo-web';
+const siteUrl = (env.SITE_URL || defaultUrl).replace(/\/+$/, '');
 
 const services = [
  {
@@ -69,5 +73,20 @@ for(const s of services){
  const content=`${opening}<section class="section"><div class="wrap faq-layout"><div class="faq-intro"><p class="eyebrow">Resolvamos tus dudas</p><h2 class="section-title">Antes de dar<br>el primer paso.</h2></div><div>${faq(s.faq)}</div></div></section><section class="contact"><div class="wrap section-head" style="margin-bottom:0"><div><p class="eyebrow">Hablemos de ${s.name.toLowerCase()}</p><h2>Tu negocio tiene<br>un próximo paso.</h2></div><div><p>Cuéntanos lo que necesitas y preparemos una propuesta para ti.</p>${button('Solicitar cotización',href)}</div></div></section><section class="section"><div class="wrap"><p class="eyebrow">También podemos ayudarte con</p><h2 class="section-title">Conecta tu estrategia.</h2><div class="related">${services.filter(x=>x.slug!==s.slug).map(x=>`<a href="/servicios/${x.slug}/">${x.name} ↗</a>`).join('')}</div></div></section>`;
  const dir=path.join('dist','servicios',s.slug);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'index.html'),page(`${s.name} en Monterrey · Matangazo`,s.intro,content,`/servicios/${s.slug}/`));
 }
-fs.writeFileSync('dist/robots.txt','User-agent: *\nDisallow: /\n');
+const robots = production ? `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n';
+fs.writeFileSync('dist/robots.txt', robots);
+
+if (production) {
+ const urls = [`${siteUrl}/`, ...services.map(service => `${siteUrl}/servicios/${service.slug}/`)];
+ const entries = urls.map(url => `  <url><loc>${url}</loc></url>`).join('\n');
+ fs.writeFileSync('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`);
+} else {
+ fs.rmSync('dist/sitemap.xml', {force: true});
+}
+
+if (onCloudflarePages) {
+ fs.writeFileSync('dist/_headers', 'https://matangazo-web.pages.dev/*\n  X-Robots-Tag: noindex\n');
+} else {
+ fs.rmSync('dist/_headers', {force: true});
+}
 console.log('Generadas: portada y 6 páginas de servicios.');

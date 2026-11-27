@@ -2,11 +2,11 @@
 
 Web independiente de WordPress, centrada en servicios y cotización. Incluye portada, seis páginas de servicios y consulta por WhatsApp. No contiene directorio ni conexión con la instalación de matangazo.mx.
 
-## GitHub Pages
+## Publicación
 
-Repositorio en https://github.com/ErozKruzpe248/matangazo-web y web en https://erozkruzpe248.github.io/matangazo-web/.
+Cloudflare Pages publica https://matangazo.com.mx/ desde la rama `main` de https://github.com/ErozKruzpe248/matangazo-web. La compilación usa `npm run build && npm run check && node --check dist/app.js` y publica la carpeta `dist`. El dominio oficial es la raíz sin `www`, y en producción el generador incluye el sitemap y permite el rastreo.
 
-Cada envío a `main` ejecuta `.github/workflows/pages.yml`, genera las siete páginas, verifica enlaces y recursos, y publica `dist` en GitHub Pages. El flujo obtiene `BASE_PATH` y `SITE_URL` del alojamiento para resolver imágenes, navegación, contacto y metadatos. También se puede iniciar desde Actions.
+El flujo `.github/workflows/pages.yml` conserva la versión de revisión en https://erozkruzpe248.github.io/matangazo-web/, con su ruta base y el rastreo deshabilitado.
 
 El repositorio conserva el historial de la web y los ajustes de animaciones, numeración y asteriscos.
 
@@ -51,11 +51,9 @@ El formulario valida nombre, negocio y servicio. Prepara un mensaje para revisi�
 
 - Revisar alcances y prioridades de los seis servicios.
 - Los precios aprobados el 27 de noviembre de 2026 están centralizados en `scripts/commercial.mjs`. Las condiciones de autorización están en `AGENTS.md` y se verifican con `npm run check`.
-- Elegir el dominio definitivo y cambiar metadatos de URL al conectarlo.
 - Revisar el aviso de privacidad para el nuevo dominio. Por ahora los enlaces llevan al aviso existente de Matangazo.
 - Validar los proyectos que se desean destacar y añadir material de portafolio autorizado.
 - Activar medición de conversiones si se requiere. Esta versión no incorpora analítica.
-- La versión de revisión tiene `robots.txt` que solicita no rastrear el contenido. Cambiarlo y añadir sitemap al preparar el lanzamiento público.
 
 El alojamiento de revisión de Sites es privado. No se cambiaron el dominio, DNS ni el WordPress actuales.
 

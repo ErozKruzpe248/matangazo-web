@@ -22,4 +22,4 @@ Los precios de `scripts/commercial.mjs` están congelados hasta recibir autoriza
 - Diseño de marca cuesta $6,000 MXN. Cualquier tarifa adicional necesita autorización.
 - Consultar al usuario cualquier condición comercial nueva antes de publicarla. No inventar descuentos, promociones, impuestos, plazos de pago ni prestaciones.
 - Mantener las seis categorías principales y las funcionalidades actuales. El servicio obsoleto de tarjeta digital está excluido de la nueva web.
-- Las actualizaciones de este repositorio se publican mediante GitHub Pages. Los cambios en los servicios de la página antigua requieren autorización del usuario.
+- El sitio comercial se publica en https://matangazo.com.mx/ mediante Cloudflare Pages desde la rama `main`. GitHub Pages conserva una versión de revisión. Los cambios en los servicios de la página antigua requieren autorización del usuario.
