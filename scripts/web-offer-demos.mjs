@@ -1,55 +1,81 @@
-const cafeLogo = '<span class="offer-demo-logo"><span>☕</span> Café Nube</span>';
+const assets = '/assets/demos/';
 
-const tabs = [
-  ['Inicio', 'Café de barrio', 'Un buen día empieza con café.'],
-  ['Menú', 'Cafés y pan dulce', 'Conoce lo que preparamos.'],
-  ['Nosotros', 'Sobre Café Nube', 'Café hecho con calma.'],
-  ['Galería', 'Conoce el espacio', 'Un rincón para hacer una pausa.'],
-  ['Ubicación', 'Cómo llegar', 'Encuentra la sucursal en el mapa.'],
-  ['Contacto', 'Hablemos por WhatsApp', 'Pregunta por tu bebida favorita.']
-];
+const renderTabs = labels => `<div class="offer-tabs">${labels.map(label => `<span>${label}</span>`).join('')}</div>`;
 
-export function presenceDemo() {
-  const labels = tabs.map(([label], index) =>
-    `<span style="--scene-delay:${index * 1.5}s">${label}</span>`
-  ).join('');
-  const banners = tabs.map(([, title, copy], index) =>
-    `<div class="offer-scene presence-demo-banner" style="--scene-delay:${index * 1.5}s">
-       <strong>${title}</strong><span>${copy}</span>
-     </div>`
-  ).join('');
+function windowDemo(className, description, content) {
   return `
-    <figure class="offer-demo motion-canvas" data-motion tabindex="0" aria-label="Demostración de Presencia Web: logo, banner y recorrido por seis pestañas">
-      <div class="offer-demo-screen" aria-hidden="true">
-        <div class="offer-demo-header">${cafeLogo}<span>Sitio de ejemplo</span></div>
-        <div class="presence-demo-tabs">${labels}</div>
-        <div class="offer-demo-scenes">${banners}</div>
+    <figure class="offer-demo ${className} motion-canvas" data-motion tabindex="0" aria-label="${description}">
+      <div class="offer-window" aria-hidden="true">
+        <div class="offer-chrome"><i></i><i></i><i></i></div>
+        <div class="offer-viewport">${content}</div>
       </div>
     </figure>`;
 }
 
-export function ordersDemo() {
-  return `
-    <figure class="offer-demo orders-demo motion-canvas" data-motion tabindex="0" aria-label="Demostración de Pedidos Web: del menú al carrito y de ahí a un mensaje simulado en WhatsApp">
-      <div class="offer-demo-screen" aria-hidden="true">
-        <div class="offer-demo-header">${cafeLogo}<span>Pedido de ejemplo</span></div>
-        <div class="offer-demo-scenes">
-          <div class="offer-scene orders-demo-stage" style="--scene-delay:0s">
-            <strong>Menú</strong>
-            <div class="orders-item"><span>☕ Latte</span><span class="orders-add">＋</span></div>
-            <div class="orders-item"><span>🥐 Croissant</span><span class="orders-add">＋</span></div>
-          </div>
-          <div class="offer-scene orders-demo-stage" style="--scene-delay:2.5s">
-            <strong>Carrito</strong>
-            <div class="orders-item"><span>Latte</span><span>× 1</span></div>
-            <div class="orders-item"><span>Croissant</span><span>× 1</span></div>
-            <span class="orders-whatsapp">Enviar por WhatsApp</span>
-          </div>
-          <div class="offer-scene orders-message" style="--scene-delay:5s">
-            <strong>WhatsApp · Simulación</strong>
-            <div class="orders-bubble">Hola, Café Nube. Quiero pedir un latte y un croissant. <span>✓✓</span></div>
-          </div>
+export function presenceDemo() {
+  return windowDemo('workshop-demo', 'Taller El Moreno: de la portada a los servicios y al mapa de ubicación', `
+    <div class="offer-scroll">
+      <section class="offer-panel offer-landing">
+        <div class="offer-site-header"><img src="${assets}moreno-logo.webp" alt="" loading="lazy"></div>
+        <div class="offer-photo-banner">
+          <img src="${assets}moreno-taller.webp" alt="" loading="lazy">
+          <div><strong>Taller El Moreno</strong><span>Mecánica y mantenimiento en Monterrey</span></div>
         </div>
-      </div>
-    </figure>`;
+      </section>
+      <section class="offer-panel workshop-services">
+        <strong>Nuestros servicios</strong>
+        ${renderTabs(['Todos', 'Diagnóstico', 'Afinación', 'Aceite', 'Polarizado', 'Revisión'])}
+        <div class="workshop-feature">
+          <img src="${assets}moreno-diagnostico.webp" alt="" loading="lazy">
+          <strong>Diagnóstico y reparación general</strong>
+        </div>
+      </section>
+      <section class="offer-panel workshop-location">
+        <strong>Ubicación y contacto</strong>
+        <div class="workshop-map">
+          <img src="${assets}moreno-mapa.png" alt="" loading="lazy">
+          <span class="workshop-pin"></span>
+          <small>© OpenStreetMap contributors</small>
+        </div>
+      </section>
+    </div>`);
+}
+
+const fillings = ['Deshebrada', 'Chicharrón rojo', 'Chicharrón verde', 'Nopalitos', 'Rajas con queso', 'Picadillo'];
+
+const menuRows = fillings.map((name, index) => {
+  const selected = index < 2;
+  return `<div class="offer-menu-row${selected ? ' offer-adding' : ''}"${selected ? ` style="--add-at:${index ? 5.4 : 4.45}s"` : ''}>
+    <span>${name}</span><span class="offer-quantity">0</span><span class="offer-add">+</span>
+  </div>`;
+}).join('');
+
+export function ordersDemo() {
+  return windowDemo('orders-demo', 'Gorditacos: de la portada al menú, dos productos agregados al carrito y el botón de WhatsApp', `
+    <div class="offer-scroll">
+      <section class="offer-panel offer-landing">
+        <div class="offer-site-header"><img src="${assets}gorditacos.webp" alt="" loading="lazy"></div>
+        <div class="offer-photo-banner">
+          <img src="${assets}tacos.webp" alt="" loading="lazy">
+          <div><strong>Gorditacos</strong><span>Menú y pedidos</span></div>
+        </div>
+      </section>
+      <section class="offer-panel orders-menu">
+        <div class="orders-menu-title"><strong>Gorditas doradas</strong>
+          <span class="offer-cart">🛒 <span class="offer-count"><span>0</span><span>1</span><span>2</span></span></span>
+        </div>
+        <div class="offer-menu-body">
+          <img src="${assets}gorditas.webp" alt="" loading="lazy">
+          <div class="offer-menu-options">${menuRows}</div>
+        </div>
+      </section>
+      <section class="offer-panel orders-review">
+        <strong>Resumen del pedido</strong>
+        <div class="offer-review-items">
+          <div><span>Gordita de deshebrada</span><b>× 1</b></div>
+          <div><span>Gordita de chicharrón rojo</span><b>× 1</b></div>
+        </div>
+        <span class="offer-whatsapp">Enviar a WhatsApp</span>
+      </section>
+    </div>`);
 }

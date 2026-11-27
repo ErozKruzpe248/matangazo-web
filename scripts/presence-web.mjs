@@ -19,13 +19,12 @@ export function presenceWeb(service, breadcrumbs) {
           <p>Presencia Web reúne lo que ofreces, dónde encontrarte y cómo contactarte en una página profesional con tu logo y tus colores.</p>
           <a class="button" href="#alcance">Ver qué incluye</a>
         </div>
-        <figure class="presence-example">
+        <figure class="presence-example" aria-label="Presencia Web en computadora y celular">
           <div class="presence-stage">
             <div class="presence-devices motion-canvas" data-motion aria-hidden="true">
               ${webPreview()}
             </div>
           </div>
-          <figcaption>Ejemplo de diseño en computadora y celular</figcaption>
         </figure>
       </div>
     </div>
