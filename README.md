@@ -45,12 +45,12 @@ El formulario valida nombre, negocio y servicio. Prepara un mensaje para revisi�
 - Redes sociales: https://matangazo.mx/diseno-de-redes-sociales-en-monterrey/
 - Identidad y aplicaciones: presentación y logos proporcionados por el usuario.
 - Los proyectos FiscalNet, Mr Ruta y Fleteando México están identificados en la página actual. Se muestran descripciones breves sin inventar testimonios, métricas, capturas o resultados.
-- Los alcances propuestos de servicios son una base editorial para revisar, especialmente SEO, Google Ads y automatización, que tienen menos detalle en la web de origen.
+- El alcance de Community Manager conserva los seis puntos de la página anterior de Redes Sociales. Los alcances de los demás servicios siguen disponibles para revisión comercial.
 
 ## Pendientes para el lanzamiento comercial
 
 - Revisar alcances y prioridades de los seis servicios.
-- Definir precios y periodicidad. El sitio actual muestra $3,500 anuales en el inicio y como pago único en la página de diseño web; por eso esta versión usa cotización.
+- Los precios aprobados el 27 de noviembre de 2026 están centralizados en `scripts/commercial.mjs`. Las condiciones de autorización están en `AGENTS.md` y se verifican con `npm run check`.
 - Elegir el dominio definitivo y cambiar metadatos de URL al conectarlo.
 - Revisar el aviso de privacidad para el nuevo dominio. Por ahora los enlaces llevan al aviso existente de Matangazo.
 - Validar los proyectos que se desean destacar y añadir material de portafolio autorizado.

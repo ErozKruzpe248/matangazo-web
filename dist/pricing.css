@@ -1,0 +1,23 @@
+.service-pricing {
+  border-top: 1px solid currentColor;
+  margin: 20px 0;
+  padding-top: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.price-summary-offer + .price-summary-offer { margin-top: 18px; }
+.price-name { display: block; font-size: 16px; line-height: 1.45; margin: 0 0 10px; }
+.price-line { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 16px; }
+.price-line b { white-space: nowrap; }
+.price-note { margin-top: 6px; }
+.price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px; margin-top: 32px; }
+.price-card { display: flex; flex-direction: column; align-items: stretch; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: var(--blue-wash); color: var(--ink); }
+.price-card .price-name { font-size: 22px; margin-bottom: 22px; }
+.price-card .price-line { font-size: 16px; margin-bottom: 8px; }
+.price-card .price-note { font-size: 16px; }
+.price-card .button { margin-top: auto; align-self: flex-start; }
+.price-card .price-line:last-of-type, .price-card .price-note:last-of-type { margin-bottom: 24px; }
+@media (max-width: 480px) {
+  .price-card { padding: 24px; }
+  .service-pricing { font-size: 14px; }
+}

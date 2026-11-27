@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { commercialTerms, communityManagerScope } from './commercial.mjs';
 const root=path.resolve('dist');
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const generatedBasePath = homepage.match(/<meta name="site-base-path" content="([^"]*)">/)?.[1] || '';
@@ -9,8 +10,42 @@ const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.is
 const pages=walk(root).filter(file=>file.endsWith('.html'));
 assert.equal(pages.length,7,'Deben existir la portada y seis páginas de servicios.');
 let references=0;
+const expectedAmounts = {
+  'index.html': [3500, 250, 4500, 450, 26000, 13000, 6000],
+  'servicios/diseno-web/index.html': [3500, 250, 4500, 450],
+  'servicios/redes-sociales/index.html': [26000, 13000],
+  'servicios/identidad-de-marca/index.html': [6000],
+  'servicios/posicionamiento-seo/index.html': [],
+  'servicios/google-ads/index.html': [],
+  'servicios/automatizacion/index.html': []
+};
+assert.equal(Object.keys(commercialTerms).length, 6, 'Conservar las seis categorías principales.');
+assert.deepEqual(commercialTerms['diseno-web'][0].rates, [{label:'Implementación',amount:3500},{label:'Mensualidad',amount:250}]);
+assert.deepEqual(commercialTerms['diseno-web'][1].rates, [{label:'Implementación',amount:4500},{label:'Mensualidad',amount:450}]);
+const communityManager = commercialTerms['redes-sociales'][0];
+assert.equal(communityManager.duration, 'Tres meses');
+assert.equal(communityManager.installmentAmount, 13000);
+assert.equal(communityManager.rates[0].amount, 2 * communityManager.installmentAmount);
+assert.equal(communityManager.advertisingExcluded, true);
+assert.deepEqual(communityManagerScope, [
+  '12 Post Imagen', '8 videos reel',
+  'Adaptación de cada publicación al formato Historia',
+  'Calendario Semanal (Autorizado)',
+  'Paleta de Colores y formatos establecidos',
+  'Diseño y configuración de campaña (no incluye inversión)'
+]);
 for(const file of pages){
  const html=fs.readFileSync(file,'utf8');
+ const relativeFile = path.relative(root, file).replaceAll('\\', '/');
+ const amounts = Array.from(html.matchAll(/\$([\d,]+)(?:\.\d+)?\s*MXN/g), match => Number(match[1].replaceAll(',', '')));
+ assert.deepEqual(amounts, expectedAmounts[relativeFile], `Precios aprobados y orden correcto en ${relativeFile}`);
+ assert.equal((html.match(/\$[\d,]+/g) || []).length, amounts.length, `Todos los precios deben indicar MXN en ${relativeFile}`);
+ assert.ok(!/tarjeta digital|\bdescuentos?\b|\bpromoci[oó]n(?:es)?\b|\bal a[nñ]o\b|pago [uú]nico/i.test(html), `Evitar ofertas y condiciones comerciales contradictorias en ${relativeFile}`);
+ if (relativeFile === 'servicios/redes-sociales/index.html') {
+   communityManagerScope.forEach(item => assert.ok(html.includes(`<li>${item}</li>`), `Conservar alcance de Community Manager: ${item}`));
+   assert.ok(html.includes('No incluye inversión publicitaria.'));
+   assert.doesNotMatch(html, /mensual|por mes/i, 'Conservar las cantidades originales sin atribuirles periodicidad.');
+ }
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`Un título principal en ${file}`);
  assert.match(html,/<title>[^<]+<\/title>/);
  assert.match(html,/<html lang="es-MX">/);
