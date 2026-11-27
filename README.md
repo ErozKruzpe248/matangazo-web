@@ -1,12 +1,20 @@
-# Matangazo — versión comercial 6
+# Matangazo — web de servicios
 
 Web independiente de WordPress, centrada en servicios y cotización. Incluye portada, seis páginas de servicios y consulta por WhatsApp. No contiene directorio ni conexión con la instalación de matangazo.mx.
+
+## GitHub Pages
+
+Repositorio en https://github.com/ErozKruzpe248/matangazo-web y web en https://erozkruzpe248.github.io/matangazo-web/.
+
+Cada envío a `main` ejecuta `.github/workflows/pages.yml`, genera las siete páginas, verifica enlaces y recursos, y publica `dist` en GitHub Pages. El flujo obtiene `BASE_PATH` y `SITE_URL` del alojamiento para resolver imágenes, navegación, contacto y metadatos. También se puede iniciar desde Actions.
+
+El repositorio conserva el historial de la web y los ajustes de animaciones, numeración y asteriscos.
 
 ## Cambios de esta versión
 
 Los seis servicios de la portada tienen tarjetas del mismo nivel visual y demostraciones propias. Identidad de marca muestra una composición de aplicaciones reales de Matangazo; SEO representa una búsqueda ilustrativa; Google Ads presenta un anuncio de ejemplo; automatización muestra un flujo de contacto, organización y seguimiento.
 
-Los ejemplos no representan posiciones reales en buscadores, campañas publicitarias activas ni un flujo conectado a herramientas externas. Cada tarjeta enlaza a su servicio y tiene un botón para repetir su animación.
+Los ejemplos no representan posiciones reales en buscadores, campañas publicitarias activas ni un flujo conectado a herramientas externas. Cada tarjeta enlaza a su servicio. Las animaciones se repiten al volver a pasar el cursor, al enfocar la muestra con teclado o al tocarla en celular.
 
 Se conservan el recorrido web, las publicaciones por capas, el comparador de identidad y las demás piezas de la versión anterior. Las animaciones se activan al entrar en pantalla, se pausan fuera de vista y respetan movimiento reducido. No se añadieron videos, fuentes externas ni bibliotecas.
 
@@ -18,13 +26,13 @@ El selector orienta a diseño web, Google Ads o identidad de marca. El enlace de
 
 Requiere Node.js. No necesita instalar paquetes.
 
-1. Ejecutar `npm run dev` desde esta carpeta.
+1. Ejecutar `npm run build` y después `npm run dev` desde esta carpeta.
 2. Abrir `http://127.0.0.1:4173/`.
 3. Editar contenido general en `scripts/generate.mjs`, portada y selector en `scripts/hero.mjs`, demostraciones en `scripts/motion.mjs`, tarjetas 3 a 6 en `scripts/service-cards.mjs`, estilos base en `dist/styles.css`, dirección editorial en `dist/direction.css`, demostraciones en `dist/motion.css`, tarjetas 3 a 6 en `dist/service-cards.css` y comportamiento en `dist/app.js`.
 4. Después de cambiar contenido, ejecutar `node scripts/generate.mjs`.
 5. Ejecutar `npm run check` y `node --check dist/app.js`.
 
-La carpeta `dist` es el sitio listo para un servidor estático. Sus rutas requieren servir esa carpeta como raíz, no abrir directamente el HTML desde el explorador de archivos.
+La carpeta `dist` contiene el sitio estático. El servidor local muestra la dirección correspondiente a la compilación. `BASE_PATH` permite publicar en una subcarpeta, y `SITE_URL` define la dirección usada en los metadatos. El flujo de GitHub Pages configura ambos valores automáticamente.
 
 ## Contacto
 

@@ -37,6 +37,7 @@ if(form){
 }
 
 const goalButtons = Array.from(document.querySelectorAll('[data-goal]'));
+const siteBasePath = document.querySelector('meta[name="site-base-path"]')?.getAttribute('content') || '';
 if(goalButtons.length){
   const goals={
     web:{title:'Una web que presente bien tu negocio.',description:'Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.',label:'Explorar diseño web',url:'/servicios/diseno-web/'},
@@ -50,7 +51,7 @@ if(goalButtons.length){
     document.querySelector('#goal-heading').textContent=goal.title;
     document.querySelector('#goal-description').textContent=goal.description;
     const link=document.querySelector('#goal-link');
-    link.href=goal.url;
+    link.href=siteBasePath+goal.url;
     link.replaceChildren(document.createTextNode(goal.label+' '));
     const arrow=document.createElement('span');arrow.className='arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';link.append(arrow);
   }));

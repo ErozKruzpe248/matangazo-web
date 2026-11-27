@@ -2,6 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 const root=path.resolve('dist');
+const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const generatedBasePath = homepage.match(/<meta name="site-base-path" content="([^"]*)">/)?.[1] || '';
+const basePath = (process.env.BASE_PATH ?? generatedBasePath).replace(/\/+$/, '');
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):[path.join(dir,entry.name)]);
 const pages=walk(root).filter(file=>file.endsWith('.html'));
 assert.equal(pages.length,7,'Deben existir la portada y seis páginas de servicios.');
@@ -15,9 +18,10 @@ for(const file of pages){
  for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   const ref=match[1];
   if(!ref.startsWith('/')&&!ref.startsWith('#'))continue;
-  const relative='/'+path.relative(root,file).replaceAll('\\','/');
+  const relative=basePath+'/'+path.relative(root,file).replaceAll('\\','/');
   const url=new URL(ref,'https://local.test'+relative);
-  let dest=path.join(root,decodeURIComponent(url.pathname));
+  assert.ok(url.pathname.startsWith(basePath+'/'),`Ruta fuera de la publicación: ${ref} en ${file}`);
+  let dest=path.join(root,decodeURIComponent(url.pathname.slice(basePath.length)));
   if(fs.existsSync(dest)&&fs.statSync(dest).isDirectory())dest=path.join(dest,'index.html');
   assert.ok(fs.existsSync(dest),`Destino faltante: ${ref} en ${file}`);
   if(url.hash){assert.match(fs.readFileSync(dest,'utf8'),new RegExp(`id="${url.hash.slice(1)}"`),`Ancla faltante: ${ref}`);}
