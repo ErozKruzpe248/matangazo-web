@@ -9,6 +9,9 @@ const basePath = (process.env.BASE_PATH ?? generatedBasePath).replace(/\/+$/, ''
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):[path.join(dir,entry.name)]);
 const pages=walk(root).filter(file=>file.endsWith('.html'));
 assert.equal(pages.length,7,'Deben existir la portada y seis páginas de servicios.');
+const production = process.env.CF_PAGES === '1' && process.env.CF_PAGES_BRANCH === 'main';
+const officialOrigin = 'https://matangazo.com.mx';
+const canonicalUrls = [];
 let references=0;
 const expectedAmounts = {
   'index.html': [],
@@ -49,6 +52,13 @@ for(const file of pages){
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`Un título principal en ${file}`);
  assert.match(html,/<title>[^<]+<\/title>/);
  assert.match(html,/<html lang="es-MX">/);
+ if (production) {
+  const route = '/' + relativeFile.slice(0, -'index.html'.length);
+  const canonicalUrl = officialOrigin + route;
+  assert.ok(html.includes(`<link rel="canonical" href="${canonicalUrl}">`), `Canonical de producción incorrecta en ${relativeFile}`);
+  assert.ok(html.includes(`<meta property="og:url" content="${canonicalUrl}">`), `URL de redes sociales incorrecta en ${relativeFile}`);
+  canonicalUrls.push(canonicalUrl);
+ }
  assert.ok(!/wp-content|wp-json|#buscador|type="search"/i.test(html),`Sin dependencias de WordPress ni directorio en ${file}`);
  for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   const ref=match[1];
@@ -62,5 +72,14 @@ for(const file of pages){
   if(url.hash){assert.match(fs.readFileSync(dest,'utf8'),new RegExp(`id="${url.hash.slice(1)}"`),`Ancla faltante: ${ref}`);}
   references++;
  }
+}
+if (production) {
+ const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
+ assert.match(robots, /^Allow: \/$/m);
+ assert.doesNotMatch(robots, /^Disallow: \/$/m);
+ assert.ok(robots.includes(`Sitemap: ${officialOrigin}/sitemap.xml`), 'robots.txt debe indicar el sitemap oficial');
+ const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+ const publishedUrls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), match => match[1]);
+ assert.deepEqual(publishedUrls.sort(), canonicalUrls.sort(), 'El sitemap debe coincidir con las canónicas de producción');
 }
 console.log(`Correcto: ${pages.length} páginas y ${references} referencias internas. Sin recursos faltantes.`);
