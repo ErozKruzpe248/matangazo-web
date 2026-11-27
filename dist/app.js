@@ -10,7 +10,8 @@ if(menu && navigation){
 }
 const form = document.querySelector('#contact-form');
 if(form){
-  const selected = new URLSearchParams(window.location.search).get('servicio');
+  const requestedService = new URLSearchParams(window.location.search).get('servicio');
+  const selected = requestedService === 'Diseño web' ? 'Presencia Web' : requestedService;
   const service = form.elements.namedItem('servicio');
   if(selected && Array.from(service.options).some(option=>option.value===selected))service.value=selected;
   form.addEventListener('submit',event=>{
@@ -40,7 +41,7 @@ const goalButtons = Array.from(document.querySelectorAll('[data-goal]'));
 const siteBasePath = document.querySelector('meta[name="site-base-path"]')?.getAttribute('content') || '';
 if(goalButtons.length){
   const goals={
-    web:{title:'Una web que presente bien tu negocio.',description:'Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.',label:'Explorar diseño web',url:'/servicios/diseno-web/'},
+    web:{title:'Una web que presente bien tu negocio.',description:'Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.',label:'Explorar Presencia Web',url:'/servicios/diseno-web/'},
     consultas:{title:'Conecta con quienes buscan lo que ofreces.',description:'Revisemos cómo dar a conocer tus servicios con anuncios y una ruta clara al contacto.',label:'Conocer Google Ads',url:'/servicios/google-ads/'},
     marca:{title:'Una imagen que hable bien de tu negocio.',description:'Dale coherencia a tu identidad, tus materiales y la forma en que te presentas.',label:'Explorar identidad de marca',url:'/servicios/identidad-de-marca/'}
   };
@@ -106,7 +107,7 @@ if(reel){
   const controls=Array.from(reel.querySelectorAll('[data-reel-select]'));
   const pause=reel.querySelector('[data-reel-pause]');
   const status=reel.querySelector('[data-reel-status]');
-  const names=['Diseño web: una buena primera impresión.','Identidad: una marca reconocible en cada detalle.','Comunicación: una voz propia para tu negocio.'];
+  const names=['Presencia Web: una buena primera impresión.','Identidad: una marca reconocible en cada detalle.','Comunicación: una voz propia para tu negocio.'];
   const compact=window.matchMedia('(max-width: 800px)');
   let index=0,visible=false,timer,paused=motionPreference.matches||compact.matches;
   const stop=()=>{window.clearTimeout(timer);reel.classList.remove('reel-running');};

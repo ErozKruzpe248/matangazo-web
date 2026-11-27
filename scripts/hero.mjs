@@ -8,8 +8,8 @@ export const hero = (button, arrow) => `
     <div class="reel-bar"><span><i aria-hidden="true"></i> MATANGAZO EN ACCIÓN</span><span>DEMOSTRACIÓN DE DISEÑO</span></div>
     <div class="reel-stage">
       <div class="reel-scene scene-web is-active" data-scene="0" aria-hidden="false">
-        <div class="reel-note reel-piece"><span class="reel-number">DISEÑO WEB</span><strong>Una buena<br>primera<br><em>impresión.</em></strong><span class="reel-fine">Tu negocio, en su mejor versión.</span></div>
-        <div class="hero-web-demo motion-canvas" data-motion tabindex="0" role="group" aria-label="Muestra animada de diseño web"><div class="hero-devices">${webPreview()}</div></div>
+        <div class="reel-note reel-piece"><span class="reel-number">PRESENCIA WEB</span><strong>Una buena<br>primera<br><em>impresión.</em></strong><span class="reel-fine">Tu negocio, en su mejor versión.</span></div>
+        <div class="hero-web-demo motion-canvas" data-motion tabindex="0" role="group" aria-label="Muestra animada de Presencia Web"><div class="hero-devices">${webPreview()}</div></div>
         <span class="reel-stamp reel-piece" aria-hidden="true">Hecha para<br><b>conectar.</b><span>↗</span></span>
       </div>
       <div class="reel-scene scene-identity" data-scene="1" aria-hidden="true" hidden>
@@ -35,5 +35,5 @@ export const hero = (button, arrow) => `
     <button type="button" data-goal="web" aria-pressed="true" aria-controls="goal-result">Necesito una web <span aria-hidden="true">↗</span></button>
     <button type="button" data-goal="consultas" aria-pressed="false" aria-controls="goal-result">Quiero más consultas <span aria-hidden="true">↗</span></button>
     <button type="button" data-goal="marca" aria-pressed="false" aria-controls="goal-result">Quiero mejorar mi imagen <span aria-hidden="true">↗</span></button>
-  </div><div class="goal-result" id="goal-result" aria-live="polite" aria-atomic="true"><p class="goal-kicker">TU PUNTO DE PARTIDA</p><h3 id="goal-heading">Una web que presente bien tu negocio.</h3><p id="goal-description">Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.</p><a id="goal-link" class="text-link" href="/servicios/diseno-web/">Explorar diseño web ${arrow}</a></div></div>
+  </div><div class="goal-result" id="goal-result" aria-live="polite" aria-atomic="true"><p class="goal-kicker">TU PUNTO DE PARTIDA</p><h3 id="goal-heading">Una web que presente bien tu negocio.</h3><p id="goal-description">Explica lo que haces, muestra tu oferta y facilita que las personas te contacten.</p><a id="goal-link" class="text-link" href="/servicios/diseno-web/">Explorar Presencia Web ${arrow}</a></div></div>
 </div></section>`;
