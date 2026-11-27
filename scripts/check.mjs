@@ -11,7 +11,7 @@ const pages=walk(root).filter(file=>file.endsWith('.html'));
 assert.equal(pages.length,7,'Deben existir la portada y seis páginas de servicios.');
 let references=0;
 const expectedAmounts = {
-  'index.html': [3500, 250, 4500, 450, 26000, 13000, 6000],
+  'index.html': [],
   'servicios/diseno-web/index.html': [3500, 250, 4500, 450],
   'servicios/redes-sociales/index.html': [26000, 13000],
   'servicios/identidad-de-marca/index.html': [6000],

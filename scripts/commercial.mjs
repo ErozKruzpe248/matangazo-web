@@ -44,28 +44,20 @@ export const communityManagerScope = [
 
 const money = amount => '$' + amount.toLocaleString('es-MX') + ' MXN';
 
-function offerContent(offer, detailed) {
-  const heading = detailed ? 'h3' : 'strong';
+function offerContent(offer) {
   const rates = (offer.rates || []).map(rate =>
     `<div class="price-line"><span>${rate.label}</span><b>${money(rate.amount)}</b></div>`
   ).join('');
   const duration = offer.duration ? `<div class="price-note">Duración del servicio · ${offer.duration}</div>` : '';
   const installments = offer.installmentAmount ? `<div class="price-note">Pago en dos parcialidades de ${money(offer.installmentAmount)}.</div>` : '';
   const advertising = offer.advertisingExcluded ? '<div class="price-note">No incluye inversión publicitaria.</div>' : '';
-  const quote = offer.quote && !detailed ? '<div class="price-note">Solicitar cotización</div>' : '';
-  return `<${heading} class="price-name">${offer.name}</${heading}>${rates}${duration}${installments}${advertising}${quote}`;
-}
-
-export function pricingSummary(slug) {
-  return `<div class="service-pricing" data-price-service="${slug}">${commercialTerms[slug].map(offer =>
-    `<div class="price-summary-offer">${offerContent(offer, false)}</div>`
-  ).join('')}</div>`;
+  return `<h3 class="price-name">${offer.name}</h3>${rates}${duration}${installments}${advertising}`;
 }
 
 export function pricingSection(service, href) {
   const offers = commercialTerms[service.slug];
   const cards = offers.map(offer =>
-    `<article class="price-card">${offerContent(offer, true)}<a class="button" href="${href}">Solicitar cotización</a></article>`
+    `<article class="price-card">${offerContent(offer)}<a class="button" href="${href}">Solicitar cotización</a></article>`
   ).join('');
   return `<section class="section" id="precios"><div class="wrap"><h2 class="section-title">${offers.every(offer => offer.quote) ? 'Solicita una cotización.' : 'Servicios e inversión.'}</h2><div class="price-grid" data-price-service="${service.slug}">${cards}</div></div></section>`;
 }
