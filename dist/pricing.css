@@ -12,3 +12,43 @@
 @media (max-width: 480px) {
   .price-card { padding: 24px; }
 }
+
+.price-card.price-card-illustrated {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  align-items: stretch;
+  padding: 10px;
+}
+
+.price-card-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(20px, 3.2vw, 48px);
+}
+
+.price-card-copy .button { margin-top: 0; }
+.price-card-copy .price-name { text-wrap: balance; }
+
+.price-card-visual {
+  position: relative;
+  align-self: center;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--blue-light);
+}
+
+.price-card-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 690px) {
+  .price-card.price-card-illustrated { grid-template-columns: minmax(0, 1fr); }
+  .price-card-visual { grid-row: 1; }
+  .price-card-copy { padding: 22px 13px 16px; }
+}

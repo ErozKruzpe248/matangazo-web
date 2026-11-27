@@ -49,6 +49,18 @@ export const communityManagerScope = [
 
 const money = amount => '$' + amount.toLocaleString('es-MX') + ' MXN';
 
+const serviceImages = {
+  'redes-sociales': {file: 'servicios/redes-sociales.webp', description: 'Composición de publicaciones para redes sociales en un celular y en tarjetas.'},
+  'identidad-de-marca': {file: 'marca-aplicada.webp', description: 'Identidad de Matangazo aplicada a una taza azul con el símbolo en rojo.', width: 459, height: 347},
+  'posicionamiento-seo': {file: 'servicios/posicionamiento-seo.webp', description: 'Una lupa destaca uno de los resultados de una búsqueda.'},
+  'google-ads': {file: 'servicios/google-ads.webp', description: 'Un cursor señala el botón de un anuncio patrocinado.'},
+  'automatizacion': {file: 'servicios/automatizacion.webp', description: 'Un flujo conecta un mensaje, un documento y una confirmación.'}
+};
+
+function offerVisual({file, description, width = 840, height = 560}) {
+  return `<div class="price-card-visual"><img src="/assets/${file}" alt="${description}" width="${width}" height="${height}" loading="lazy" decoding="async"></div>`;
+}
+
 function offerContent(offer) {
   const rates = (offer.rates || []).map(rate =>
     `<div class="price-line"><span>${rate.label}</span><b>${money(rate.amount)}</b></div>`
@@ -61,8 +73,11 @@ function offerContent(offer) {
 
 export function pricingSection(service, href) {
   const offers = commercialTerms[service.slug];
-  const cards = offers.map(offer =>
-    `<article class="price-card"${offer.id ? ` id="${offer.id}"` : ''}>${offerContent(offer)}<a class="button" href="${href}">Solicitar cotización</a></article>`
-  ).join('');
+  const image = serviceImages[service.slug];
+  const cards = offers.map(offer => {
+    const details = `${offerContent(offer)}<a class="button" href="${href}">Solicitar cotización</a>`;
+    const content = image ? `<div class="price-card-copy">${details}</div>${offerVisual(image)}` : details;
+    return `<article class="price-card${image ? ' price-card-illustrated' : ''}"${offer.id ? ` id="${offer.id}"` : ''}>${content}</article>`;
+  }).join('');
   return `<section class="section" id="precios"><div class="wrap"><h2 class="section-title">${offers.every(offer => offer.quote) ? 'Solicita una cotización.' : 'Servicios e inversión.'}</h2><div class="price-grid" data-price-service="${service.slug}">${cards}</div></div></section>`;
 }
