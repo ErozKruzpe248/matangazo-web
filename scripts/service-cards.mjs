@@ -11,7 +11,7 @@ const automation=()=>`<div class="automation-demo" aria-hidden="true"><div class
 const cards=[
  {slug:'identidad-de-marca',kind:'identity',number:'03',label:'Identidad de marca',title:'Una marca que<br>se reconoce.',copy:'Identidad, color y aplicaciones para presentar tu negocio con coherencia en cada punto de contacto.',visual:identity,caption:'APLICACIONES DE MARCA / MATANGAZO',cta:'Darle forma a mi marca',icon:'✦'},
  {slug:'posicionamiento-seo',kind:'seo',number:'04',label:'Posicionamiento SEO',title:'Que te encuentren<br>cuando te necesitan.',copy:'Trabajamos tu presencia y tu contenido para dar a conocer tus servicios en buscadores.',visual:seo,caption:'EJEMPLO VISUAL / NO ES UN RANKING REAL',cta:'Conocer posicionamiento SEO',icon:'⌕'},
- {slug:'google-ads',kind:'ads',number:'05',label:'Google Ads',title:'Tu oferta, frente<br>a quien la busca.',copy:'Campañas y páginas de destino con un objetivo claro: acercar personas interesadas a tu negocio.',visual:ads,caption:'ANUNCIO DE EJEMPLO / MATANGAZO',cta:'Explorar Google Ads',icon:'↗'},
+ {slug:'google-ads',kind:'campaign',number:'05',label:'Google Ads',title:'Tu oferta, frente<br>a quien la busca.',copy:'Campañas y páginas de destino con un objetivo claro: acercar personas interesadas a tu negocio.',visual:ads,caption:'ANUNCIO DE EJEMPLO / MATANGAZO',cta:'Explorar Google Ads',icon:'↗'},
  {slug:'automatizacion',kind:'automation',number:'06',label:'Automatización',title:'Cada contacto tiene<br>un siguiente paso.',copy:'Revisamos tus procesos para simplificar tareas y dar continuidad a las consultas que recibes.',visual:automation,caption:'EJEMPLO DE FLUJO / MATANGAZO',cta:'Simplificar mi proceso',icon:'⇢'}
 ];
 

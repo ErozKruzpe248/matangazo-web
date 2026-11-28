@@ -3,14 +3,14 @@
 .home-page .service-expanded{border:1px solid var(--line)}
 .home-page .card-identity{background:linear-gradient(135deg,var(--blue-wash),#fff 85%);color:var(--ink)}
 .home-page .card-seo{background:linear-gradient(120deg,var(--blue),var(--navy));color:#fff;border-color:transparent}
-.home-page .card-ads{background:var(--red);color:#fff;border-color:transparent}
+.home-page .card-campaign{background:var(--red);color:#fff;border-color:transparent}
 .home-page .card-automation{background:linear-gradient(145deg,#fff,var(--blue-wash));color:var(--ink)}
 .home-page .card-identity .text-link,.home-page .card-automation .text-link{color:var(--blue)}
-.home-page .card-seo>p,.home-page .card-ads>p,.home-page .card-seo .service-num,.home-page .card-ads .service-num,.home-page .card-seo .text-link,.home-page .card-ads .text-link{color:#fff}
-.home-page .card-seo .service-icon,.home-page .card-ads .service-icon{color:#fff;border-color:#ffffff80}
+.home-page .card-seo>p,.home-page .card-campaign>p,.home-page .card-seo .service-num,.home-page .card-campaign .service-num,.home-page .card-seo .text-link,.home-page .card-campaign .text-link{color:#fff}
+.home-page .card-seo .service-icon,.home-page .card-campaign .service-icon{color:#fff;border-color:#ffffff80}
 .expanded-preview{color:var(--navy)}
 .expanded-preview>.preview-caption{color:var(--muted);font-size:6px;letter-spacing:.8px}
-.card-seo .expanded-preview>.preview-caption,.card-ads .expanded-preview>.preview-caption{color:#fff}
+.card-seo .expanded-preview>.preview-caption,.card-campaign .expanded-preview>.preview-caption{color:#fff}
 .identity-board{position:absolute;inset:0 0 43px;border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;isolation:isolate}
 .identity-board:before{content:'';position:absolute;right:-14%;top:-9%;width:64%;height:125%;background:var(--blue-wash);border-radius:40%;rotate:-20deg;z-index:-1}
 .identity-board-label{font-size:6px;letter-spacing:1px;font-weight:700;color:var(--muted);position:absolute;left:20px;top:18px}
