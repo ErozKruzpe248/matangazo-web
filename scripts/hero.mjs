@@ -30,7 +30,7 @@ export const hero = (button, arrow) => `
   <div class="hero-closing"><p>Una web que te presente.<br>Una marca que te distinga.<br><span>Una estrategia que te acerque a tus clientes.</span></p><a class="text-link" href="#servicios">Conoce lo que hacemos <span aria-hidden="true">↓</span></a></div>
 </div></section>
 <section class="goal-guide" aria-labelledby="goal-title"><div class="wrap goal-layout">
-  <div><p class="eyebrow">Comencemos por ti</p><h2 id="goal-title">¿Qué quieres<br>mover hoy?</h2><p>Elige tu punto de partida.</p></div>
+  <div><p class="eyebrow">Comencemos por ti</p><h2 id="goal-title">¿Qué quieres mover hoy?</h2><p>Elige tu punto de partida.</p></div>
   <div class="goal-tool"><div class="goal-options" role="group" aria-label="Elige el objetivo de tu negocio">
     <button type="button" data-goal="web" aria-pressed="true" aria-controls="goal-result">Necesito una web <span aria-hidden="true">↗</span></button>
     <button type="button" data-goal="consultas" aria-pressed="false" aria-controls="goal-result">Quiero más consultas <span aria-hidden="true">↗</span></button>

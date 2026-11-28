@@ -96,7 +96,7 @@ document.querySelectorAll('[data-evolution]').forEach(evolution=>{
   const update=()=>{
     const value=Math.max(0,Math.min(100,Number(slider.value)));
     tool.style.setProperty('--split',value+'%');
-    slider.setAttribute('aria-valuetext',value===100?'Identidad de 2017':value===0?'Identidad de 2026':`${value}% de la identidad de 2017 y ${100-value}% de la de 2026`);
+    slider.setAttribute('aria-valuetext',value===100?'Identidad de 2012':value===0?'Identidad de 2026':`${value}% de la identidad de 2012 y ${100-value}% de la de 2026`);
   };
   slider.addEventListener('input',update);
   evolution.querySelectorAll('[data-evolution-value]').forEach(button=>button.addEventListener('click',()=>{slider.value=button.dataset.evolutionValue;update();}));
