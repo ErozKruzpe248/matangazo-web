@@ -7,7 +7,6 @@ export function presenceWeb(service, breadcrumbs) {
       <p>${description}</p>
     </article>`).join('');
   const scope = service.scope.map(item => `<li>${item}</li>`).join('');
-  const limits = service.limits.map(item => `<li>${item}</li>`).join('');
 
   return `
   <section class="presence-hero">
@@ -40,17 +39,10 @@ export function presenceWeb(service, breadcrumbs) {
     <div class="wrap">
       <h2 class="section-title">Alcance de Presencia Web</h2>
       <p class="presence-lead">${service.scopeIntro}</p>
-      <div class="presence-scope">
-        <article class="presence-panel presence-includes">
-          <h3>Qué incluye</h3>
-          <ul>${scope}</ul>
-        </article>
-        <article class="presence-panel presence-limits">
-          <h3>Qué queda fuera</h3>
-          <ul>${limits}</ul>
-          <p>Si tus clientes necesitan armar un carrito y enviarlo por WhatsApp, conoce <a class="presence-inline-link" href="#pedidos-web">Pedidos Web</a>.</p>
-        </article>
-      </div>
+      <article class="presence-panel presence-includes">
+        <h3>Qué incluye</h3>
+        <ul>${scope}<li><a class="presence-orders-link" href="#pedidos-web">Solo en Pedidos Web</a> · Menú y pedidos conectados a WhatsApp.</li></ul>
+      </article>
     </div>
   </section>`;
 }

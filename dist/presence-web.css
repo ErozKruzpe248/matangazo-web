@@ -66,23 +66,14 @@
 .presence-benefit h3, .presence-panel h3 { margin: 0; font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.2; }
 .presence-benefit p { margin: 12px 0 0; color: var(--muted); }
 .presence-details { background: var(--blue-wash); }
-.presence-scope {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  align-items: stretch;
-  gap: 20px;
-  margin-top: 32px;
-}
-.presence-panel { padding: clamp(20px, 3.7vw, 46px); border-radius: 12px; }
+.presence-panel { margin-top: 32px; padding: clamp(20px, 3.7vw, 46px); border-radius: 12px; }
 .presence-includes { background: var(--blue); color: white; }
-.presence-limits { background: white; border-top: 4px solid var(--red); }
 .presence-panel ul { padding-inline-start: 1.1em; margin: 20px 0 0; }
 .presence-panel li { padding-block: 10px; }
 .presence-panel li + li { border-top: 1px solid var(--line); }
 .presence-includes li + li { border-color: rgb(255 255 255 / 26%); }
-.presence-limits p { margin: 24px 0 0; color: var(--muted); }
 @media (max-width: 800px) {
-  .presence-opening, .presence-scope { grid-template-columns: minmax(0, 1fr); }
+  .presence-opening { grid-template-columns: minmax(0, 1fr); }
   .presence-stage { aspect-ratio: 1.55; }
   .presence-devices .demo-screen { height: clamp(158px, 42vw, 310px); }
 }
@@ -90,12 +81,13 @@
   .presence-benefit-grid { grid-template-columns: 1fr; }
 }
 
-.presence-inline-link {
-  color: var(--blue);
+.presence-orders-link {
+  color: inherit;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.presence-orders-link:focus-visible { outline-color: white; }
 
 .price-grid[data-price-service="diseno-web"] {
   grid-template-columns: repeat(2, minmax(0, 1fr));
