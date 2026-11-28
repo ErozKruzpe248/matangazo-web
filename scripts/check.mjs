@@ -8,13 +8,14 @@ const generatedBasePath = homepage.match(/<meta name="site-base-path" content="(
 const basePath = (process.env.BASE_PATH ?? generatedBasePath).replace(/\/+$/, '');
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):[path.join(dir,entry.name)]);
 const pages=walk(root).filter(file=>file.endsWith('.html'));
-assert.equal(pages.length,7,'Deben existir la portada y seis páginas de servicios.');
+assert.equal(pages.length,8,'Deben existir la portada y siete páginas de servicios.');
 const production = process.env.CF_PAGES === '1' && process.env.CF_PAGES_BRANCH === 'main';
 const officialOrigin = 'https://matangazo.com.mx';
 const canonicalUrls = [];
 let references=0;
 const expectedAmounts = {
   'index.html': [],
+  'servicios/desarrollo-web-a-medida/index.html': [],
   'servicios/diseno-web/index.html': [3500, 250, 4500, 450],
   'servicios/redes-sociales/index.html': [26000, 13000],
   'servicios/identidad-de-marca/index.html': [6000],
@@ -22,7 +23,7 @@ const expectedAmounts = {
   'servicios/google-ads/index.html': [],
   'servicios/automatizacion/index.html': []
 };
-assert.equal(Object.keys(commercialTerms).length, 6, 'Conservar las seis categorías principales.');
+assert.equal(commercialTerms['diseno-web'].length, 2, 'Presencia Web solo ofrece Presencia Web y Pedidos Web.');
 assert.deepEqual(commercialTerms['diseno-web'][0].rates, [{label:'Implementación',amount:3500},{label:'Mensualidad',amount:250}]);
 assert.deepEqual(commercialTerms['diseno-web'][1].rates, [{label:'Implementación',amount:4500},{label:'Mensualidad',amount:450}]);
 const communityManager = commercialTerms['redes-sociales'][0];

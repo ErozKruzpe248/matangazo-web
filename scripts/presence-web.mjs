@@ -49,7 +49,6 @@ export function presenceWeb(service, breadcrumbs) {
           <h3>Qué queda fuera</h3>
           <ul>${limits}</ul>
           <p>Si tus clientes necesitan armar un carrito y enviarlo por WhatsApp, conoce <a class="presence-inline-link" href="#pedidos-web">Pedidos Web</a>.</p>
-          <p>Para vender con pagos en línea o incorporar funciones a medida, podemos cotizar una página personalizada.</p>
         </article>
       </div>
     </div>

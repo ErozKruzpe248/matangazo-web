@@ -18,8 +18,7 @@ export const commercialTerms = {
         {label: 'Implementación', amount: 4500},
         {label: 'Mensualidad', amount: 450}
       ]
-    },
-    {name: 'Página web personalizada', quote: true}
+    }
   ],
   'redes-sociales': [
     {
